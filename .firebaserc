@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "danotes-e517c": {
+      "hosting": {
+        "danotes": [
+          "danotes-e517c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "danotes-e517c"
+  }
+}
