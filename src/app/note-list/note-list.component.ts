@@ -13,7 +13,7 @@ import { NoteComponent } from './note/note.component';
   imports: [FormsModule, CommonModule, NoteComponent],
   templateUrl: './note-list.component.html',
   styleUrl: './note-list.component.scss'
-}) 
+})
 export class NoteListComponent {
   noteList: Note[] = [];
   favFilter: "all" | "fav" = "all";
@@ -23,15 +23,23 @@ export class NoteListComponent {
   }
 
   getList(): Note[] {
-    return this.noteService.normalNotes;
+    if (this.status == 'notes') {
+      if (this.favFilter == 'all') {
+        return this.noteService.normalNotes;
+      } else {
+        return this.noteService.normalMarkedNotes;
+      }
+    } else{
+      return this.noteService.trashNotes;
+    }
   }
 
-  changeFavFilter(filter:"all" | "fav"){
+  changeFavFilter(filter: "all" | "fav") {
     this.favFilter = filter;
   }
 
-  changeTrashStatus(){
-    if(this.status == "trash"){
+  changeTrashStatus() {
+    if (this.status == "trash") {
       this.status = "notes";
     } else {
       this.status = "trash";
